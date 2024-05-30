@@ -1,14 +1,14 @@
 import 'dart:convert';
+import 'dart:html' as html;
+import 'dart:io';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:qr_flutter/qr_flutter.dart';
-import 'dart:ui' as ui;
-import 'dart:typed_data';
 import 'package:flutter/rendering.dart';
 import 'package:path_provider/path_provider.dart';
-import 'dart:io';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:share/share.dart';
-import 'dart:html' as html;
 
 void main() {
   runApp(MyApp());
@@ -69,11 +69,24 @@ class _MyHomePageState extends State<MyHomePage> {
             if (_qrData.isNotEmpty)
               RepaintBoundary(
                 key: _qrKey,
-                child: QrImageView(
-                  data: _qrData,
-                  backgroundColor: Colors.white,
-                  version: QrVersions.auto,
-                  size: 200.0,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    QrImageView(
+                      data: _qrData,
+                      backgroundColor: Colors.white,
+                      version: QrVersions.auto,
+                      size: 200.0,
+                    ),
+                    Positioned(
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        child:
+                            Image.asset('assets/images/ic_security_login.png'),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             SizedBox(height: 20),

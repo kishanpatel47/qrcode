@@ -40,7 +40,8 @@ dependencies:
   path_provider: any
   image_gallery_saver: any
   permission_handler: any
-  web_sharing: any
+  url_launcher: any
+ 
 
 
 
